@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AnonNumber">
+        <attr name="sensitivity" format="float" />
+        <attr name="epsilon" format="float" />
+    </declare-styleable>
+    <declare-styleable name="AnonCheckBox">
+        <attr name="accuracy" format="float" />
+    </declare-styleable>
+    <declare-styleable name="AnonImageView">
+        <attr name="blurfactor" format="float" />
+    </declare-styleable>
+</resources>

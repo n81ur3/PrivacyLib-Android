@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PrivacyLibDemo</string>
+    <string name="button_change_value">Change Random Value</string>
+    <string name="just_a_test_for_custom_view">Just a test for custom view</string>
+    <string name="edit_text_with_clear">Edit Text with Clear</string>
+    <string name="initial_value">initial value</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="portrait">portrait</string>
+</resources>

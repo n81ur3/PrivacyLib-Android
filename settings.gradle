@@ -1,0 +1,3 @@
+include ':privacylib'
+include ':app'
+rootProject.name = "PrivacyLibDemo"
