@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
+import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 import at.fhj.ims.privacylib.GaussianBlur
 import at.fhj.ims.privacylib.R
@@ -40,6 +41,7 @@ class AnonImageView: AppCompatImageView {
         val drawable = drawable as BitmapDrawable
         val bitmap = drawable.bitmap
         val blurredBitmap = GaussianBlur.blur(context, bitmap, blurradius)
+        setLayerType(View.LAYER_TYPE_SOFTWARE, null)
         setImageBitmap(blurredBitmap)
         return super.performLongClick()
     }

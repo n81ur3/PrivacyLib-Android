@@ -15,7 +15,6 @@ object SecureNoiseMath {
         val maxExponentBits = java.lang.Double.doubleToLongBits(Double.MAX_VALUE) and exponentMask
 
         return java.lang.Double.longBitsToDouble(exponentBits + 0x0010000000000000L)
-
     }
 
     fun roundToMultipleOfPowerOfTwo(x: Double, granularity: Double): Double {

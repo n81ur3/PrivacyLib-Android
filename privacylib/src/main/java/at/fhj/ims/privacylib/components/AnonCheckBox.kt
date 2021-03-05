@@ -35,8 +35,7 @@ class AnonCheckBox: AppCompatCheckBox {
         accuracy = 0.5
     }
 
-    override fun isChecked(): Boolean {
-        val realValue = super.isChecked()
-        return BooleanNoise.addNoise(realValue, accuracy)
+    fun isProbableChecked(): Boolean {
+        return BooleanNoise.addNoise(isChecked(), accuracy)
     }
 }

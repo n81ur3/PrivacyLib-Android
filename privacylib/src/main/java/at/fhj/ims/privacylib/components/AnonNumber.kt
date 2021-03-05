@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.widget.LinearLayoutCompat
 import at.fhj.ims.privacylib.R
 import at.fhj.ims.privacylib.RandomDPNoise
@@ -15,6 +14,7 @@ class AnonNumber: LinearLayoutCompat {
     private val TAG = "AnonNumber"
     private var sensitivity = 1.2
     private var epsilon = 0.8
+    private var precision = 2
 
     constructor(context: Context) : super(context) {
         setStyledAttributes(context, null, 0)
@@ -40,10 +40,12 @@ class AnonNumber: LinearLayoutCompat {
             val typedArray: TypedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.AnonNumber, defStyleAttr, 0)
             sensitivity = typedArray.getFloat(R.styleable.AnonNumber_sensitivity, 1.0f).toDouble()
             epsilon = typedArray.getFloat(R.styleable.AnonNumber_epsilon, 0.8f).toDouble()
+            precision = typedArray.getInteger(R.styleable.AnonNumber_precision, 2)
             return
         }
         sensitivity = 1.2
         epsilon = 0.8
+        precision = 2
     }
 
     private fun init() {
@@ -51,9 +53,13 @@ class AnonNumber: LinearLayoutCompat {
         anon_button.setOnClickListener {
             Log.i(TAG, "current sensitivity: $sensitivity, current epsilon: $epsilon")
             val currentValue: Double = java.lang.Double.parseDouble(anon_number.text.toString())
-            anon_number.setText(RandomDPNoise.addNoise(currentValue, sensitivity, epsilon).toString())
+            val result = RandomDPNoise.addNoise(currentValue, sensitivity, epsilon)
+            val roundedResult = "%.${precision}f".format(result)
+            anon_number.setText(roundedResult)
         }
+    }
 
-
+    fun getAnonNumber(): Double {
+        return anon_number.text.toString().toDouble()
     }
 }
