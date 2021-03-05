@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item_basics"
+        android:title="Basics"
+        android:icon="@drawable/ic_basics" />
+    <item
+        android:id="@+id/menu_item_image"
+        android:title="Image"
+        android:icon="@drawable/ic_image" />
+    <item
+        android:id="@+id/menu_item_text"
+        android:title="Text"
+        android:icon="@drawable/ic_text" />
+    <item
+        android:id="@+id/menu_item_radiogroup"
+        android:title="RadioGroup"
+        android:icon="@drawable/ic_ballot" />
+</menu>
