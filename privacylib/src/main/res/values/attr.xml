@@ -2,11 +2,14 @@
 <resources>
     <declare-styleable name="GlobalAttr">
         <attr name="accuracy" format="float" />
-    </declare-styleable>
-    <declare-styleable name="AnonNumber">
         <attr name="sensitivity" format="float" />
         <attr name="epsilon" format="float" />
         <attr name="precision" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="NumberAnonymizer">
+        <attr name="sensitivity" />
+        <attr name="epsilon" />
+        <attr name="precision" />
     </declare-styleable>
     <declare-styleable name="AnonCheckBox">
         <attr name="accuracy" />
@@ -16,5 +19,10 @@
     </declare-styleable>
     <declare-styleable name="AnonRadioGroup">
         <attr name="accuracy" />
+    </declare-styleable>
+    <declare-styleable name="AnonNumber">
+        <attr name="sensitivity" />
+        <attr name="epsilon" />
+        <attr name="precision" />
     </declare-styleable>
 </resources>

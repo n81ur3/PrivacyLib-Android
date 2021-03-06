@@ -2,28 +2,24 @@ package at.fhj.ims.privacylib.components
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.text.InputType
 import android.util.AttributeSet
-import android.util.Log
-import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.appcompat.widget.AppCompatEditText
 import at.fhj.ims.privacylib.R
 import at.fhj.ims.privacylib.RandomDPNoise
-import kotlinx.android.synthetic.main.anon_number_layout.view.*
+import java.math.BigDecimal
 
-
-class AnonNumber: LinearLayoutCompat {
-    private val TAG = "AnonNumber"
-    private var sensitivity = 1.2
-    private var epsilon = 0.8
-    private var precision = 2
+class AnonNumber: AppCompatEditText {
+    var sensitivity = 1.0
+    var epsilon = 1.0
+    var precision: Int = 2
 
     constructor(context: Context) : super(context) {
         setStyledAttributes(context, null, 0)
-        init()
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         setStyledAttributes(context, attrs, 0)
-        init()
     }
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -32,34 +28,27 @@ class AnonNumber: LinearLayoutCompat {
         defStyleAttr
     ) {
         setStyledAttributes(context, attrs, defStyleAttr)
-        init()
     }
 
     private fun setStyledAttributes(context: Context, attrs: AttributeSet?, defStyleAttr: Int) {
+        inputType = InputType.TYPE_CLASS_NUMBER
         attrs?.let {
-            val typedArray: TypedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.AnonNumber, defStyleAttr, 0)
+            val typedArray: TypedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.AnonCheckBox, defStyleAttr, 0)
+            precision = typedArray.getInt(R.styleable.AnonNumber_precision, 2)
             sensitivity = typedArray.getFloat(R.styleable.AnonNumber_sensitivity, 1.0f).toDouble()
-            epsilon = typedArray.getFloat(R.styleable.AnonNumber_epsilon, 0.8f).toDouble()
-            precision = typedArray.getInteger(R.styleable.AnonNumber_precision, 2)
+            epsilon = typedArray.getFloat(R.styleable.AnonNumber_epsilon, 1.0f).toDouble()
             return
         }
-        sensitivity = 1.2
-        epsilon = 0.8
+        sensitivity = 1.0
+        epsilon = 1.0
         precision = 2
     }
 
-    private fun init() {
-        inflate(context, R.layout.anon_number_layout, this)
-        anon_button.setOnClickListener {
-            Log.i(TAG, "current sensitivity: $sensitivity, current epsilon: $epsilon")
-            val currentValue: Double = java.lang.Double.parseDouble(anon_number.text.toString())
-            val result = RandomDPNoise.addNoise(currentValue, sensitivity, epsilon)
-            val roundedResult = "%.${precision}f".format(result)
-            anon_number.setText(roundedResult)
-        }
-    }
+    fun getAnonymizedNumber(): Double {
+        val currentValue = text.toString().toDouble()
+        val noisedValue = RandomDPNoise.addNoise(currentValue, sensitivity, epsilon)
+        val roundedValue = BigDecimal(noisedValue).setScale(2, BigDecimal.ROUND_HALF_EVEN).toDouble()
+        return roundedValue
 
-    fun getAnonNumber(): Double {
-        return anon_number.text.toString().toDouble()
     }
 }

@@ -58,7 +58,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <at.fhj.ims.privacylib.components.AnonNumber
+        <at.fhj.ims.privacylib.components.NumberAnonymizer
             android:id="@+id/anonNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
