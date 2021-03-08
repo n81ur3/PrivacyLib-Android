@@ -14,12 +14,12 @@
         android:layout_marginTop="32dp"
         android:contentDescription="@string/portrait"
         android:src="@drawable/snowden_portrait"
+        app:blurfactor="4.2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        custom:blurfactor="4.0"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <at.fhj.ims.privacylib.components.AnonNumber
@@ -29,10 +29,10 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
+        app:anon_number_precision="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:precision="1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/evalDPNumber"

@@ -23,6 +23,6 @@
     <declare-styleable name="AnonNumber">
         <attr name="sensitivity" />
         <attr name="epsilon" />
-        <attr name="precision" />
+        <attr name="anon_number_precision" format="integer" />
     </declare-styleable>
 </resources>
