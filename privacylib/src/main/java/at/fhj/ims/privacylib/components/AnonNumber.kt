@@ -34,7 +34,7 @@ class AnonNumber: AppCompatEditText {
         inputType = InputType.TYPE_CLASS_NUMBER
         attrs?.let {
             val typedArray: TypedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.AnonNumber, defStyleAttr, 0)
-            precision = typedArray.getInt(R.styleable.AnonNumber_anon_number_precision, 2)
+            precision = typedArray.getInt(R.styleable.AnonNumber_precision, 2)
             sensitivity = typedArray.getFloat(R.styleable.AnonNumber_sensitivity, 1.0f).toDouble()
             epsilon = typedArray.getFloat(R.styleable.AnonNumber_epsilon, 1.0f).toDouble()
             return
