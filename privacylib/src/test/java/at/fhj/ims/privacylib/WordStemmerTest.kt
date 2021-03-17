@@ -18,17 +18,18 @@ class WordStemmerTest {
 
     @Test
     fun testStopWordsRemoval() {
-        val sentense = "While she was working, he ask again for a favor"
-        val stopwords = arrayListOf("while", "work", "she", "was", "he", "again", "for", "a")
-        val stemmedWords = WordStemmer.stem(sentense)
-        stemmedWords.forEach {word ->
-            assertFalse(word in stopwords)
+        val sentense = "the unit test confirms that her solution is not working properly"
+        val stopwords = arrayListOf("the", "that", "her", "is", "not")
+
+        val stemmedSentence = WordStemmer.stem(sentense)
+
+        stopwords.forEach { word ->
+            assertFalse(stemmedSentence.contains(word))
         }
-        println(WordStemmer.stem(sentense))
     }
 
     @Test
-    fun testStemSentense() {
+    fun testStemSentence() {
         val sentense = "Learning for the exam leads to successful passing"
         val result = WordStemmer.stem(sentense)
         assertEquals("learn exam lead success pass", result)

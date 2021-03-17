@@ -8,15 +8,16 @@
         android:id="@+id/anon_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="8.2"
-        android:inputType="number">
-    </EditText>
+        android:autofillHints=""
+        android:hint="@string/input"
+        android:inputType="number"
+        android:text="@string/_8_2" />
 
     <Button
         android:id="@+id/anon_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Anon">
+        android:text="@string/anon">
 
     </Button>
 

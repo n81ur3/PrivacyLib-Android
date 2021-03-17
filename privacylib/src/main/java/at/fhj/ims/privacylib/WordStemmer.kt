@@ -14,7 +14,6 @@ fun List<String>.toSentence(): String {
 }
 
 object WordStemmer {
-    // https://gist.github.com/sebleier/554280
     private val stopWords =  listOf("i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your",
         "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it",
         "its", "itself", "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this",

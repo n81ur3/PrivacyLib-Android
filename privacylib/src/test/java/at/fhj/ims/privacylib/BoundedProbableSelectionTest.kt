@@ -26,7 +26,7 @@ class BoundedProbableSelectionTest {
 
         println("\nTrue percentage: %.2f".format(counts[originalSelection].toDouble() / testruns * 100))
         counts.forEachIndexed { index, count ->
-            println("Percentage for Random Value $index: %.2f".format(count.toDouble() / testruns * 100))
+            println("Percentage for Random Value $index:\t%05.2f%%".format(count.toDouble() / testruns * 100))
         }
     }
 

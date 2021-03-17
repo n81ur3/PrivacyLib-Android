@@ -16,8 +16,6 @@ class TextDemoFragment : Fragment() {
         fun newInstance() = TextDemoFragment()
     }
 
-    private val TAG = "TextDemoFragment"
-
     private lateinit var viewModel: TextDemoViewModel
 
     override fun onCreateView(

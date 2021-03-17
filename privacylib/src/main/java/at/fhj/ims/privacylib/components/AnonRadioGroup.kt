@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
-import android.util.Log
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import at.fhj.ims.privacylib.BoundedProbableSelection
@@ -22,7 +21,6 @@ class AnonRadioGroup : RadioGroup {
     private fun setStyledAttributes(context: Context, attrs: AttributeSet) {
         val typedArray: TypedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.AnonRadioGroup, 0, 0)
         accuracy = typedArray.getFloat(R.styleable.AnonRadioGroup_accuracy, 0.5f).toDouble()
-        Log.d("AnonRadioGroup", "accuracy: $accuracy")
     }
 
     fun getSelectedAnonymized(activity: Activity): Int {

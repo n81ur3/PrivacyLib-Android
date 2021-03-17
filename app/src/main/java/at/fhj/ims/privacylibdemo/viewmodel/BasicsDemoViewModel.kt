@@ -1,6 +1,5 @@
 package at.fhj.ims.privacylibdemo.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,7 +19,6 @@ class BasicsDemoViewModel : ViewModel() {
     }
 
     fun changeRandomValue() {
-        Log.i("ViewModel", "Change Random Value")
         val currentInput = seedValue.value
         currentInput?.let {
             if (it.isNotEmpty()) {

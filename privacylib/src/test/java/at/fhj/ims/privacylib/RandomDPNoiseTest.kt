@@ -13,21 +13,23 @@ class RandomDPNoiseTest {
     fun addNoise() {
         val value = 8.0
         var result: Double
+        println("Initial value: $value")
         sensitivities.forEach { s ->
             epsilons.forEach { e ->
                 result = RandomDPNoise.addNoise(value, s, e)
-                println("Sensitivity: $s - Epsilon: $e - Result: %.2f".format(result))
+                println("Sensitivity: $s - Epsilon: $e - Result: %05.2f".format(result))
             }
         }
     }
 
     @Test
-    fun addNoiseSensitivity() {
+    fun addNoiseVaryingSensitivity() {
         val testruns = 1000
         val value = 8.0
         val epsilon = 1.0
         var totalNoise: Double
         var noise: Double
+        println("Initial value: $value")
         for (sensitivity in sensitivities) {
             totalNoise = 0.0
             repeat(testruns) {
@@ -39,7 +41,7 @@ class RandomDPNoiseTest {
     }
 
     @Test
-    fun addNoiseEpsilon() {
+    fun addNoiseVaryingEpsilon() {
         val testruns = 1000
         val value = 8.0
         val sensitivity = 1.0
@@ -110,7 +112,7 @@ class RandomDPNoiseTest {
         value: Double
     ) {
         println(
-            "Sensitivity: %.2f - Epsilon: %.2f - Testruns: $testruns >> Total-Noise: %.2f >> Average-Noise: %.2f".format(
+            "Sensitivity: %.2f - Epsilon: %.2f - Testruns: $testruns >> Total-Noise: %07.2f >> Average-Noise: %05.2f".format(
                 sensitivity,
                 epsilon,
                 totalNoise,

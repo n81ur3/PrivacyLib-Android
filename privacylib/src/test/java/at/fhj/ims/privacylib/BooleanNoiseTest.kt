@@ -13,6 +13,7 @@ class BooleanNoiseTest {
         val testruns = 10000
         var count: Double
         println("Original Value: $originalValue")
+
         accuracies.forEach { accuracy ->
             count = 0.0
             repeat(testruns) {
@@ -32,15 +33,18 @@ class BooleanNoiseTest {
     fun addNoiseFiftyFifty() {
         val originalValue = true
         val testruns = 100000
+        val accuracy = 0.0
         var count: Double
         var truePercent: Long
+
         repeat(100) {
             count = 0.0
             repeat(testruns) {
-                if (BooleanNoise.addNoise(originalValue, 0.0)) {
+                if (BooleanNoise.addNoise(originalValue, accuracy)) {
                     count++
                 }
             }
+
             truePercent = Math.round(count / testruns * 100)
             assertEquals(50, truePercent)
             println("TRUE: $truePercent% - FALSE: ${100 - truePercent}")
@@ -49,22 +53,24 @@ class BooleanNoiseTest {
     }
 
     @Test
-    fun addNoiseFullAccuracy() {
+    fun addNoiseHighestAccuracy() {
         val originalValue = true
         val testruns = 100000
+        val accuracy = 1.0
         var count: Double
         var truePercent: Long
+
         repeat (100) {
             count = 0.0
             repeat(testruns) {
-                if (BooleanNoise.addNoise(originalValue, 1.0)) {
+                if (BooleanNoise.addNoise(originalValue, accuracy)) {
                     count++
                 }
             }
+
             truePercent = Math.round(count / testruns * 100)
             assertEquals(100, truePercent)
             println("TRUE: $truePercent% - FALSE: ${100 - truePercent}")
         }
-
     }
 }

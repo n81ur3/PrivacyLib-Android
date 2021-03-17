@@ -17,4 +17,6 @@
     <string name="user_input">User Input:</string>
     <string name="sample_sentense">Testing of the word stemming mechanism</string>
     <string name="stemmed_result">Stemmed Result</string>
+    <string name="evaluate_checkbox">Evaluate Checkbox</string>
+    <string name="evaluation_result">Evaluation Result:</string>
 </resources>

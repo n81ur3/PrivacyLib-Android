@@ -19,7 +19,6 @@ class BasicsDemoFragment : Fragment() {
         fun newInstance() = BasicsDemoFragment()
     }
 
-    private val TAG = "BasicsDemoFragment"
     private lateinit var viewModel: BasicsDemoViewModel
     private var _binding: BasicsDemoFragmentBinding? = null
     private val binding get() = _binding!!

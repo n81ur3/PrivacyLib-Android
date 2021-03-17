@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -32,8 +31,6 @@ class RadioGroupDemoFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(RadioGroupDemoViewModel::class.java)
 
         evalSelection.setOnClickListener {
-            val selected = colorGroup.getCheckedRadioButtonId()
-            val radioButton = activity?.findViewById<AppCompatRadioButton>(selected)
             activity?.let {
                 val anonIndex = colorGroup.getSelectedAnonymized(activity!!)
                 viewModel.setSelection(anonIndex)

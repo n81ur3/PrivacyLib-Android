@@ -2,14 +2,17 @@ package at.fhj.ims.privacylib
 
 import java.security.SecureRandom
 
+/* Original code derived from Google's differential privacy project
+   For further details see: https://github.com/google/differential-privacy
+ */
 object RandomDPNoise {
     private val GRANULARITY_PARAM: Double = 1L.shl(40).toDouble()
     private val random = SecureRandom()
 
-    fun addNoise(x: Double, l1Sensitivity: Double, epsilon: Double): Double {
-        val granularity: Double = SecureNoiseMath.ceilPowerOfTwo(l1Sensitivity / epsilon / GRANULARITY_PARAM)
-        val twoSidedGeomericSample: Long = sampleTwoSidedGeometric(granularity * epsilon / (l1Sensitivity + granularity))
-        return (SecureNoiseMath.roundToMultipleOfPowerOfTwo(x, granularity) + twoSidedGeomericSample * granularity)
+    fun addNoise(initialValue: Double, sensitivity: Double, epsilon: Double): Double {
+        val granularity: Double = SecureNoiseMath.ceilPowerOfTwo(sensitivity / epsilon / GRANULARITY_PARAM)
+        val twoSidedGeomericSample: Long = sampleTwoSidedGeometric(granularity * epsilon / (sensitivity + granularity))
+        return (SecureNoiseMath.roundToMultipleOfPowerOfTwo(initialValue, granularity) + twoSidedGeomericSample * granularity)
     }
 
     fun sampleGeometric(lambda: Double): Long {

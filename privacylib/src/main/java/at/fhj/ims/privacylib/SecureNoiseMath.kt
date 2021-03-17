@@ -1,5 +1,8 @@
 package at.fhj.ims.privacylib
 
+/* Original code derived from Google's differential privacy project
+   For further details see: https://github.com/google/differential-privacy
+ */
 object SecureNoiseMath {
 
     fun ceilPowerOfTwo(x: Double): Double {
@@ -12,7 +15,6 @@ object SecureNoiseMath {
         if (mantissaBits == 0x0000000000000000L) return x
 
         val exponentBits: Long = bits and exponentMask
-        val maxExponentBits = java.lang.Double.doubleToLongBits(Double.MAX_VALUE) and exponentMask
 
         return java.lang.Double.longBitsToDouble(exponentBits + 0x0010000000000000L)
     }

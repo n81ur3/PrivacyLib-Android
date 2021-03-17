@@ -45,11 +45,12 @@ class AnonNumber: AppCompatEditText {
     }
 
     fun getAnonymizedNumber(): Double {
-        if (text.isNullOrEmpty()) return 0.0
+        if (text.isNullOrEmpty() || !isNumber(text.toString())) return 0.0
         val currentValue = text.toString().toDouble()
         val noisedValue = RandomDPNoise.addNoise(currentValue, sensitivity, epsilon)
         val roundedValue = BigDecimal(noisedValue).setScale(precision, BigDecimal.ROUND_HALF_EVEN).toDouble()
         return roundedValue
-
     }
+
+    private fun isNumber(str: String): Boolean = str.toDoubleOrNull()?.let { true } ?: false
 }

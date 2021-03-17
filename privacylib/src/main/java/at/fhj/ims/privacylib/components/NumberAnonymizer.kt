@@ -3,7 +3,6 @@ package at.fhj.ims.privacylib.components
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
-import android.util.Log
 import androidx.appcompat.widget.LinearLayoutCompat
 import at.fhj.ims.privacylib.R
 import at.fhj.ims.privacylib.RandomDPNoise
@@ -11,7 +10,6 @@ import kotlinx.android.synthetic.main.anon_number_layout.view.*
 
 
 class NumberAnonymizer: LinearLayoutCompat {
-    private val TAG = "AnonNumber"
     private var sensitivity = 1.2
     private var epsilon = 0.8
     private var precision = 2
@@ -51,7 +49,6 @@ class NumberAnonymizer: LinearLayoutCompat {
     private fun init() {
         inflate(context, R.layout.anon_number_layout, this)
         anon_button.setOnClickListener {
-            Log.i(TAG, "current sensitivity: $sensitivity, current epsilon: $epsilon")
             val currentValue: Double = java.lang.Double.parseDouble(anon_number.text.toString())
             val result = RandomDPNoise.addNoise(currentValue, sensitivity, epsilon)
             val roundedResult = "%.${precision}f".format(result)

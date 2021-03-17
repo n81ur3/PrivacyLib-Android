@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
    <string name="anon_number_result">%.${precision}f</string>
+    <string name="_8_2">8.2</string>
+    <string name="anon">Anon</string>
+    <string name="input">input</string>
 </resources>
